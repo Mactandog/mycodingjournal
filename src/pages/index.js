@@ -10,7 +10,6 @@ import Portfolio from './portfolio';
 import Hook from './hook'
 import ContactUs from './contactUs';
 import MyCodingJournal from './myJournal';
-import MyToDoListPage from './toDoList';
 
 
 const Index = () => {
@@ -26,7 +25,6 @@ const Index = () => {
             <Route path="/hook" element={<Hook/>} />
             <Route path="/contactUs" element={<ContactUs />} />
             <Route path="/mycodingjournal" element={<MyCodingJournal />} />
-            <Route path="/mytodolist" element={<MyToDoListPage />} />
         </Routes>
         </div>
         <Footer />

@@ -40,10 +40,8 @@ const MyToDoList = ({myTasks, deleteTask, editTask}) => {
               </Grid>
              </Grid>
              </Card>
-        )
-            
+        ) 
         )}
-     
   </Box>
 
   )

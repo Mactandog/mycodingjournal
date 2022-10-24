@@ -58,7 +58,6 @@ useEffect(() => {
     const remove = [...thoughts].filter((thought) => {
       return thought.id !== num;
     })
-    alert(num)
     setThoughts(remove);
   }
 
@@ -97,7 +96,7 @@ let addTask = (e) => {
     date: taskDateRef.current.value, 
     task: tasksRef.current.value
   }
-alert(taskDetails)
+
   let matchId = tasks.filter((task) => {
     return task.id === taskDetails.id;
 });
@@ -105,6 +104,7 @@ alert(taskDetails)
 if(matchId.length == 0){
     setTasks([...tasks, taskDetails]);
     tasksRef.current.value = "";
+    taskDateRef.current.value = "";
 }
 else {
   tasks.map((task, index) => {
@@ -112,6 +112,7 @@ else {
           tasks.splice(index, 1, taskDetails);
             setTasks(task);
             tasksRef.current.value = "";
+            taskDateRef.current.value = "";
         }
     });
 }
@@ -129,7 +130,6 @@ useEffect(() => {
     const remove = [...tasks].filter((task) => {
       return task.id !== num;
     })
-    alert(num)
     setTasks(remove);
   }
 
