@@ -1,3 +1,41 @@
+/* Custom */
+.main {
+  background-color: #282c34;
+  min-height: 100vh;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.footer {
+  /* position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  overflow-x: hidden;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around; 
+  margin: 5rem 0;
+}
+
+.card {
+  margin: 2rem 1rem;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  max-width: 70vw;
+}
+
 .App {
   text-align: center;
 }
@@ -28,6 +66,9 @@
   color: #61dafb;
 }
 
+.blue {
+  color: aqua;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
