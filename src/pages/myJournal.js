@@ -6,7 +6,7 @@ import MyToDoList from '../components/ToDoList';
 
 
 let myThoughtsList = localStorage.getItem("thoughtsList") ? JSON.parse(localStorage.getItem("thoughtsList")) : [];
- let myTasksList = localStorage.getItem("tasksRecord") ? JSON.parse(localStorage.getItem("tasksRecord")) : [];
+let myTasksList = localStorage.getItem("tasksRecord") ? JSON.parse(localStorage.getItem("tasksRecord")) : [];
 
 
 const MyCodingJournal = () => {
@@ -39,9 +39,9 @@ else {
   thoughts.map((thought, index) => {
         if(thought.id === thoughtDetails.id) {
           thoughts.splice(index, 1, thoughtDetails);
-            setThoughts(thoughts);
             thoughtsRef.current.value = "";
         }
+        return setThoughts(thoughts);
     });
 }
 
@@ -101,7 +101,7 @@ let addTask = (e) => {
     return task.id === taskDetails.id;
 });
 
-if(matchId.length == 0){
+if(matchId.length === 0) {
     setTasks([...tasks, taskDetails]);
     tasksRef.current.value = "";
     taskDateRef.current.value = "";
@@ -110,10 +110,10 @@ else {
   tasks.map((task, index) => {
         if(task.id === taskDetails.id) {
           tasks.splice(index, 1, taskDetails);
-            setTasks(task);
             tasksRef.current.value = "";
             taskDateRef.current.value = "";
         }
+        return setTasks(tasks);
     });
 }
 
@@ -122,7 +122,6 @@ else {
 useEffect(() => {
   localStorage.setItem("tasksRecord", JSON.stringify(tasks));},
   [tasks]);
-
 
   let deleteTask = (e) => {
     let num = parseInt(e.target.id);
@@ -139,17 +138,38 @@ useEffect(() => {
     tasks.filter((task) => {
         return task.id === num })
         .map((task) => { 
-          setId(task.id);
-          return tasksRef.current.value = task.task,
-                  taskDateRef.current.value = task.date;
-      });    
+          tasksRef.current.value = task.task;
+          taskDateRef.current.value = task.date;
+          return setTaskId(task.id);   
+      }); 
 }
 
   let deleteAllTasks = (e) => {
     setTasks([]);
   }
 
+// let doneTask = (e, checkbox) => {
+//   let num = parseInt(e.target.id);
+
+// if(checkbox.checked === true) {
+//   alert("Checked");
+// }
+//   tasks.filter((task) => {
+//     return task.id === num })
+//     .map((task) => { 
+//       return tasksRef.current.value = task.task,
+//               taskDateRef.current.value = task.date;
+//   });    
+// //   const str = new String("Demo Text");
+// // document.write(str.strike());
+// // alert(str.strike());
+// }
+
+
 // End of Task // 
+
+
+
 
 
 
@@ -178,20 +198,17 @@ useEffect(() => {
           <Typography variant="h4" color="success">My Thoughts</Typography>
         </Box>
         <Box m={2}>
-          <Button type="submit" variant='contained' color='error' onClick={deleteAllThoughts}>Delete All Tasks</Button>
+          <Button type="submit" variant='contained' color='error' onClick={deleteAllThoughts}>Delete All Thoughts</Button>
         </Box>
         <MyThoughts myThoughts={thoughts} editThought={editThought} removeThought={deleteThought} />
       </Grid>
     
-
       {/* // My Tasks */}
-    
       <Grid item lg={6} border={2} padding={2}>
         <form>
-          <Typography variant="h4" color="secondary">Task</Typography>
-          
+          <Typography variant="h4" color="secondary">Tasks</Typography>
           <Typography variant="h5" color="warning">Date</Typography>
-          <input type="date" name="date" ref={taskDateRef} min={new Date().toISOString().split('T')[0]}/>
+          <input type="date" name="date" ref={taskDateRef} min={ new Date().toISOString().split('T')[0] }/>
           
           <Box mt={2}>
               <TextareaAutosize
@@ -212,7 +229,7 @@ useEffect(() => {
         <Box m={2}>
           <Button type="submit" variant='contained' color='error' onClick={deleteAllTasks}>Delete All Tasks</Button>
         </Box>
-        <MyToDoList myTasks={tasks} deleteTask={deleteTask} editTask={editTask} />
+        <MyToDoList myTasks={tasks} deleteTask={deleteTask} editTask={editTask}/>
       </Grid>
       </Grid>
     </Box>
