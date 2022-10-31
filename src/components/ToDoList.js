@@ -14,9 +14,11 @@ const MyToDoList = ({myTasks, deleteTask, editTask}) => {
               <Grid container key={task.id}>
               <Grid item lg={10} md={10} >
                   <Typography variant="h6" color="primary" textAlign="left">{task.date}</Typography>
-                  <Typography variant="h5" color="black" textAlign="left" sx={{ display: 'block', wrap: 'true'}}>{task.task}</Typography>
+                  <Typography variant="h5" color="black" textAlign="left">{task.task}</Typography>
               </Grid>
               <Grid item lg={2} md={2}>
+                {/* <Checkbox type="checkbox" id={task.id} color="primary" onClick={doneTask}>
+                </Checkbox> */}
                 <Button
                   type='button'
                   id={task.id}
@@ -33,10 +35,8 @@ const MyToDoList = ({myTasks, deleteTask, editTask}) => {
                   variant="text"
                   color="secondary"
                   startIcon={ <DeleteForeverIcon />} 
-                >
-                  Delete
+                >Delete
                 </Button>
-              
               </Grid>
              </Grid>
              </Card>

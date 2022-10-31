@@ -12,33 +12,31 @@ const MyThoughts = ({myThoughts, editThought, removeThought}) => {
         {myThoughts.map((thought) => (
             <Card sx={{ marginBottom: 3, padding: 2 }}>
               <Grid container key={thought.id}>
-              <Grid item lg={10} md={10} >
-                  <Typography variant="h6" color="primary" textAlign="left">{thought.date}</Typography>
-                  <Typography variant="h5" color="black" textAlign="left" sx={{ display: 'block', wrap: 'true'}}>{thought.thoughts}</Typography>
+                <Grid item lg={10} md={10} >
+                    <Typography variant="h6" color="primary" textAlign="left">{thought.date}</Typography>
+                    <Typography variant="h5" color="black" textAlign="left">{thought.thoughts}</Typography>
+                </Grid>
+                <Grid item lg={2} md={2}>
+                  <Button
+                    type='button'
+                    id={thought.id}
+                    onClick={editThought}
+                    variant="text"
+                    color="warning"
+                    startIcon={ <ModeEditOutlinedIcon />}
+                  >Edit
+                  </Button>
+                  <Button
+                    type='button'
+                    id={thought.id}
+                    onClick={removeThought}
+                    variant="text"
+                    color="primary"
+                    startIcon={ <DeleteForeverIcon />} 
+                  >Delete
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item lg={2} md={2}>
-                <Button
-                  type='button'
-                  id={thought.id}
-                  onClick={editThought}
-                  variant="text"
-                  color="warning"
-                  startIcon={ <ModeEditOutlinedIcon />}
-                >Edit
-                </Button>
-                <Button
-                  type='button'
-                  id={thought.id}
-                  onClick={removeThought}
-                  variant="text"
-                  color="primary"
-                  startIcon={ <DeleteForeverIcon />} 
-                >
-                  Delete
-                </Button>
-              
-              </Grid>
-             </Grid>
              </Card>
         )
             
